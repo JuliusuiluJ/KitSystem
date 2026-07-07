@@ -1,0 +1,11 @@
+# Fichiers de compilation (Gradle / Maven)
+build/
+.gradle/
+target/
+
+# Fichiers de l'IDE VSCode
+.vscode/
+
+# Fichiers générés par Windows
+Thumbs.db
+Desktop.ini
