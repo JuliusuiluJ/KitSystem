@@ -5,14 +5,14 @@
 # Configuration du menu GUI
 gui:
   title: "<dark_gray>Choix de Kit</dark_gray>"
-  size: 27 # Doit être un multiple de 9 (9, 18, 27, 36, 45, 54)
+  size: 27
 
 # Liste des kits
 kits:
   guerrier:
     display-name: "<gradient:#ff0000:#aa0000><bold>Kit Guerrier</bold></gradient>"
     permission: "kitsystem.kit.guerrier"
-    cooldown: 3600 # Temps en secondes (ici 1 heure)
+    cooldown: 20 # Temps en secondes
     gui-icon:
       material: DIAMOND_SWORD
       name: "<red>Guerrier</red>"
@@ -20,9 +20,7 @@ kits:
         - "<gray>Un kit parfait pour le combat au corps à corps.</gray>"
         - ""
         - "<yellow>Cooldown : <cooldown_format></yellow>"
-        - "<green>Cliquez pour récupérer !</green>"
-    # Les items seront générés et lus via la sérialisation native de Bukkit
-    # ... (le reste du kit guerrier)
+        - "<action_format>"
     items:
       - material: DIAMOND_SWORD
         amount: 1
@@ -30,3 +28,248 @@ kits:
         amount: 16
       - material: COOKED_BEEF
         amount: 64
+
+  mineur:
+    display-name: "<gradient:#aaaaaa:#555555><bold>Kit Mineur</bold></gradient>"
+    permission: "kitsystem.kit.mineur"
+    cooldown: 60 # 1 minute
+    gui-icon:
+      material: IRON_PICKAXE
+      name: "<gray>Mineur</gray>"
+      lore:
+        - "<gray>L'équipement parfait pour explorer les grottes.</gray>"
+        - ""
+        - "<yellow>Cooldown : <cooldown_format></yellow>"
+        - "<action_format>"
+    items:
+      - material: IRON_PICKAXE
+        amount: 1
+      - material: TORCH
+        amount: 64
+      - material: BREAD
+        amount: 32
+
+
+  archer:
+    display-name: "<gradient:#00aa00:#55ff55><bold>Kit Archer</bold></gradient>"
+    permission: "kitsystem.kit.archer"
+    cooldown: 360
+    gui-icon:
+      material: BOW
+      name: "<green>Archer</green>"
+      lore:
+        - "<gray>Dominez le champ de bataille à distance.</gray>"
+        - ""
+        - "<yellow>Cooldown : <cooldown_format></yellow>"
+        - "<action_format>"
+    items:
+      - material: BOW
+        amount: 1
+        enchantments:
+          power: 3
+          infinity: 1
+      - material: ARROW
+        amount: 1
+
+  tank:
+    display-name: "<gradient:#555555:#aaaaaa><bold>Kit Tank</bold></gradient>"
+    permission: "kitsystem.kit.tank"
+    cooldown: 720
+    gui-icon:
+      material: SHIELD
+      name: "<dark_gray>Tank</dark_gray>"
+      lore:
+        - "<gray>Une défense impénétrable.</gray>"
+        - ""
+        - "<yellow>Cooldown : <cooldown_format></yellow>"
+        - "<action_format>"
+    items:
+      - material: DIAMOND_CHESTPLATE
+        amount: 1
+        enchantments:
+          protection: 3
+          unbreaking: 3
+      - material: SHIELD
+        amount: 1
+      - material: GOLDEN_APPLE
+        amount: 3
+
+  bucheron:
+    display-name: "<gradient:#ffaa00:#ffff55><bold>Kit Bûcheron</bold></gradient>"
+    permission: "kitsystem.kit.bucheron"
+    cooldown: 180
+    gui-icon:
+      material: GOLDEN_AXE
+      name: "<gold>Bûcheron</gold>"
+      lore:
+        - "<gray>Déforestez à la vitesse de l'éclair.</gray>"
+        - ""
+        - "<yellow>Cooldown : <cooldown_format></yellow>"
+        - "<action_format>"
+    items:
+      - material: GOLDEN_AXE
+        amount: 1
+        enchantments:
+          efficiency: 5
+          unbreaking: 3
+      - material: OAK_LOG
+        amount: 64
+
+  fermier:
+    display-name: "<gradient:#ffff55:#00aa00><bold>Kit Fermier</bold></gradient>"
+    permission: "kitsystem.kit.fermier"
+    cooldown: 180
+    gui-icon:
+      material: IRON_HOE
+      name: "<yellow>Fermier</yellow>"
+      lore:
+        - "<gray>Tout pour démarrer vos cultures.</gray>"
+        - ""
+        - "<yellow>Cooldown : <cooldown_format></yellow>"
+        - "<action_format>"
+    items:
+      - material: IRON_HOE
+        amount: 1
+        enchantments:
+          unbreaking: 3
+      - material: WHEAT_SEEDS
+        amount: 64
+      - material: BONE_MEAL
+        amount: 64
+      - material: WATER_BUCKET
+        amount: 1
+
+  pecheur:
+    display-name: "<gradient:#00aaaa:#00ffff><bold>Kit Pêcheur</bold></gradient>"
+    permission: "kitsystem.kit.pecheur"
+    cooldown: 180
+    gui-icon:
+      material: FISHING_ROD
+      name: "<aqua>Pêcheur</aqua>"
+      lore:
+        - "<gray>Attrapez les meilleurs trésors marins.</gray>"
+        - ""
+        - "<yellow>Cooldown : <cooldown_format></yellow>"
+        - "<action_format>"
+    items:
+      - material: FISHING_ROD
+        amount: 1
+        enchantments:
+          lure: 3
+          luck_of_the_sea: 3
+      - material: COOKED_COD
+        amount: 16
+      - material: OAK_BOAT
+        amount: 1
+
+  explorateur:
+    display-name: "<gradient:#aa00aa:#ff55ff><bold>Kit Explorateur</bold></gradient>"
+    permission: "kitsystem.kit.explorateur"
+    cooldown: 360
+    gui-icon:
+      material: COMPASS
+      name: "<light_purple>Explorateur</light_purple>"
+      lore:
+        - "<gray>Partez à l'aventure en toute sécurité.</gray>"
+        - ""
+        - "<yellow>Cooldown : <cooldown_format></yellow>"
+        - "<action_format>"
+    items:
+      - material: COMPASS
+        amount: 1
+      - material: SPYGLASS
+        amount: 1
+      - material: IRON_BOOTS
+        amount: 1
+        enchantments:
+          feather_falling: 4
+      - material: BREAD
+        amount: 32
+
+  enchanteur:
+    display-name: "<gradient:#5555ff:#0000aa><bold>Kit Enchanteur</bold></gradient>"
+    permission: "kitsystem.kit.enchanteur"
+    cooldown: 720
+    gui-icon:
+      material: ENCHANTING_TABLE
+      name: "<blue>Enchanteur</blue>"
+      lore:
+        - "<gray>Améliorez votre équipement magique.</gray>"
+        - ""
+        - "<yellow>Cooldown : <cooldown_format></yellow>"
+        - "<action_format>"
+    items:
+      - material: ENCHANTING_TABLE
+        amount: 1
+      - material: BOOKSHELF
+        amount: 15
+      - material: LAPIS_LAZULI
+        amount: 64
+      - material: EXPERIENCE_BOTTLE
+        amount: 64
+
+  batisseur:
+    display-name: "<gradient:#ff5555:#aa0000><bold>Kit Bâtisseur</bold></gradient>"
+    permission: "kitsystem.kit.batisseur"
+    cooldown: 180
+    gui-icon:
+      material: BRICK
+      name: "<red>Bâtisseur</red>"
+      lore:
+        - "<gray>Des matériaux pour vos plus belles œuvres.</gray>"
+        - ""
+        - "<yellow>Cooldown : <cooldown_format></yellow>"
+        - "<action_format>"
+    items:
+      - material: STONE_BRICKS
+        amount: 64
+      - material: OAK_PLANKS
+        amount: 64
+      - material: GLASS
+        amount: 64
+      - material: SCAFFOLDING
+        amount: 64
+
+  assassin:
+    display-name: "<gradient:#555555:#000000><bold>Kit Assassin</bold></gradient>"
+    permission: "kitsystem.kit.assassin"
+    cooldown: 360
+    gui-icon:
+      material: IRON_SWORD
+      name: "<dark_gray>Assassin</dark_gray>"
+      lore:
+        - "<gray>Frappez fort, déplacez-vous vite.</gray>"
+        - ""
+        - "<yellow>Cooldown : <cooldown_format></yellow>"
+        - "<action_format>"
+    items:
+      - material: IRON_SWORD
+        amount: 1
+        enchantments:
+          sharpness: 5
+      - material: ENDER_PEARL
+        amount: 16
+      - material: GOLDEN_CARROT
+        amount: 32
+
+  demolisseur:
+    display-name: "<gradient:#ff0000:#aa0000><bold>Kit Démolisseur</bold></gradient>"
+    permission: "kitsystem.kit.demolisseur"
+    cooldown: 720
+    gui-icon:
+      material: TNT
+      name: "<dark_red>Démolisseur</dark_red>"
+      lore:
+        - "<gray>Faites place nette.</gray>"
+        - ""
+        - "<yellow>Cooldown : <cooldown_format></yellow>"
+        - "<action_format>"
+    items:
+      - material: TNT
+        amount: 16
+      - material: FLINT_AND_STEEL
+        amount: 1
+      - material: DIAMOND_PICKAXE
+        amount: 1
+        enchantments:
+          efficiency: 4

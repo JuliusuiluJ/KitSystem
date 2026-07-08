@@ -1,0 +1,25 @@
+# ========================================== #
+#       KitSystem - Messages configurables   #
+# ========================================== #
+
+# Préfixe affiché avant chaque message du plugin
+prefix: "<dark_gray>[</dark_gray><green>Kit</green><dark_gray>]</dark_gray> "
+
+# Messages d'erreur et permissions
+no-permission: "<red>Vous n'avez pas la permission d'effectuer cette action.</red>"
+player-only: "<red>Seul un joueur en jeu peut exécuter cette commande.</red>"
+kit-not-found: "<red>Ce kit n'existe pas.</red>"
+
+# Messages de succès
+reload-success: "<green>Configuration et kits rechargés avec succès !</green>"
+kit-received: "<green>Vous avez reçu le kit : </green><white><kit_name></white>"
+
+# Alertes et Cooldown
+inventory-full: "<yellow><bold>Attention:</bold> Votre inventaire était plein, certains objets sont tombés au sol.</yellow>"
+cooldown-active: "<red>Ce kit est en rechargement. Veuillez patienter <bold><time>s</bold>.</red>"
+
+# Interface Graphique (GUI)
+gui-cooldown-name: "<gray><strikethrough><kit_name></strikethrough></gray>"
+gui-cooldown-time: "<red><time>s restantes</red>"
+gui-ready: "<green>Prêt</green>"
+gui-action-ready: "<green>Cliquez pour récupérer !</green>" # <-- Nouvelle ligne

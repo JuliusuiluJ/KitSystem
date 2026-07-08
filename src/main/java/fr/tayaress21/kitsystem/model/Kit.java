@@ -4,19 +4,22 @@ import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import java.util.List;
 
+/**
+ * Modèle de données représentant un Kit.
+ * Les instances de cette classe sont stockées en mémoire vive (RAM)
+ * pour des performances optimales lors de la consultation.
+ */
 public class Kit {
 
     private final String id;
     private final String displayName;
     private final String permission;
-    private final long cooldown; // En secondes
+    private final long cooldown;
     
-    // Attributs pour l'icône dans le GUI
     private final Material iconMaterial;
     private final String iconName;
     private final List<String> iconLore;
     
-    // Contenu réel du kit
     private final ItemStack[] items;
 
     public Kit(String id, String displayName, String permission, long cooldown, Material iconMaterial, String iconName, List<String> iconLore, ItemStack[] items) {
@@ -30,6 +33,7 @@ public class Kit {
         this.items = items;
     }
 
+    // --- Getters ---
     public String getId() { return id; }
     public String getDisplayName() { return displayName; }
     public String getPermission() { return permission; }
