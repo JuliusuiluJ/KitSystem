@@ -29,9 +29,25 @@ public class KitCommand implements BasicCommand {
             return;
         }
 
-        // Si aucune sous-commande n'est tapée (juste /kit)
+        // 1. Sous-commande : /kit reload
+        if (args.length == 1 && args[0].equalsIgnoreCase("reload")) {
+            if (!player.hasPermission("kitsystem.admin")) {
+                player.sendMessage(MiniMessage.miniMessage().deserialize("<red>Vous n'avez pas la permission d'utiliser cette commande.</red>"));
+                return;
+            }
+            // On recharge le fichier sur le disque puis on met à jour la RAM
+            plugin.reloadConfig();
+            plugin.getKitManager().loadKits(plugin.getConfig());
+            player.sendMessage(MiniMessage.miniMessage().deserialize("<green>Configuration des kits rechargée avec succès !</green>"));
+            return;
+        }
+
+        // 2. Commande principale : /kit (Ouverture du menu)
         if (args.length == 0) {
-            // Magie : on ouvre le GUI !
+            if (!player.hasPermission("kitsystem.use")) {
+                player.sendMessage(MiniMessage.miniMessage().deserialize("<red>Vous n'avez pas accès aux kits.</red>"));
+                return;
+            }
             KitGUI.open(player, plugin);
         }
     }

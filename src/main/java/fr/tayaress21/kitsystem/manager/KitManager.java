@@ -50,8 +50,32 @@ public class KitManager {
             String iconName = section.getString("gui-icon.name", displayName);
             List<String> iconLore = section.getStringList("gui-icon.lore");
 
-            // TODO : On verra comment lire les vrais items (l'inventaire) un peu plus tard
-            ItemStack[] items = new ItemStack[0];
+            // Lecture dynamique des items depuis la configuration
+            java.util.List<ItemStack> kitItems = new java.util.ArrayList<>();
+            java.util.List<Map<?, ?>> itemMaps = section.getMapList("items");
+            
+            for (Map<?, ?> itemMap : itemMaps) {
+                // Lecture du matériel (On s'assure qu'il existe bien)
+                Object matObj = itemMap.get("material");
+                if (matObj == null) continue; 
+                String matName = matObj.toString();
+                
+                // Lecture sécurisée de la quantité avec une valeur par défaut de 1
+                int amount = 1;
+                Object amountObj = itemMap.get("amount");
+                if (amountObj instanceof Integer) {
+                    amount = (Integer) amountObj;
+                }
+                
+                Material mat = Material.getMaterial(matName.toUpperCase());
+                if (mat != null) {
+                    kitItems.add(new ItemStack(mat, amount));
+                } else {
+                    logger.warning("Materiel inconnu dans le kit " + kitId + " : " + matName);
+                }
+            }
+            
+            ItemStack[] items = kitItems.toArray(new ItemStack[0]);
 
             // Création et sauvegarde du kit en mémoire
             Kit kit = new Kit(kitId, displayName, permission, cooldown, material, iconName, iconLore, items);

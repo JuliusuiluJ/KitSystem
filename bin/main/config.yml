@@ -22,4 +22,11 @@ kits:
         - "<yellow>Cooldown : <cooldown_format></yellow>"
         - "<green>Cliquez pour récupérer !</green>"
     # Les items seront générés et lus via la sérialisation native de Bukkit
-    items: {}
+    # ... (le reste du kit guerrier)
+    items:
+      - material: DIAMOND_SWORD
+        amount: 1
+      - material: GOLDEN_APPLE
+        amount: 16
+      - material: COOKED_BEEF
+        amount: 64
