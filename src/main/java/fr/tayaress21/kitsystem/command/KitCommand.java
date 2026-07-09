@@ -4,7 +4,6 @@ import fr.tayaress21.kitsystem.KitSystemPlugin;
 import fr.tayaress21.kitsystem.gui.KitGUI;
 import io.papermc.paper.command.brigadier.BasicCommand;
 import io.papermc.paper.command.brigadier.CommandSourceStack;
-import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;

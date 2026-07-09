@@ -2,6 +2,9 @@ package fr.tayaress21.kitsystem.manager;
 
 import fr.tayaress21.kitsystem.KitSystemPlugin;
 import fr.tayaress21.kitsystem.model.Kit;
+import io.papermc.paper.registry.RegistryAccess;
+import io.papermc.paper.registry.RegistryKey;
+
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.Registry;
@@ -98,8 +101,11 @@ public class KitManager {
                             String enchantName = entry.getKey().toString().toLowerCase();
                             int level = entry.getValue() instanceof Integer ? (Integer) entry.getValue() : 1;
                             
-                            // Utilisation du Registry moderne (API Paper 1.21) pour récupérer l'enchantement
-                            Enchantment enchant = Registry.ENCHANTMENT.get(NamespacedKey.minecraft(enchantName));
+                            //  Utilisation du Registry moderne pour récupérer l'enchantement
+                            Enchantment enchant = RegistryAccess.registryAccess()
+                                    .getRegistry(RegistryKey.ENCHANTMENT)
+                                    .get(NamespacedKey.minecraft(enchantName));
+
                             if (enchant != null) {
                                 item.addUnsafeEnchantment(enchant, level);
                             } else {
@@ -110,7 +116,7 @@ public class KitManager {
                     
                     kitItems.add(item);
                 } else {
-                    plugin.getLogger().warning("Materiel d'item inconnu dans le kit " + kitId + " : " + matName);
+                    plugin.getLogger().warning("Materiau d'item inconnu dans le kit " + kitId + " : " + matName);
                 }
             }
             

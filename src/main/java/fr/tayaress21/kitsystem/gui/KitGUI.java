@@ -16,7 +16,7 @@ import java.util.List;
 
 /**
  * Classe utilitaire gérant la construction et l'ouverture du menu des kits.
- * Génère l'inventaire dynamiquement en fonction de l'état du joueur (cooldowns).
+ * Génère l'inventaire dynamiquement en fonction de l'état du joueur (cooldowns et permissions).
  */
 public class KitGUI {
 
@@ -39,7 +39,13 @@ public class KitGUI {
         int slot = 0;
         for (Kit kit : plugin.getKitManager().getKits().values()) {
             
-            // 1. Vérification de la disponibilité du kit pour ce joueur
+            // Si le joueur n'a pas la permission pour ce kit spécifique,
+            // on l'ignore (continue) et on passe au kit suivant sans incrémenter le slot.
+            if (!player.hasPermission(kit.getPermission())) {
+                continue;
+            }
+
+            // 1. Vérification de la disponibilité du kit (Cooldown)
             boolean isOnCooldown = plugin.getCooldownManager().isOnCooldown(player.getUniqueId(), kit.getId());
             long remainingSeconds = isOnCooldown ? plugin.getCooldownManager().getRemainingSeconds(player.getUniqueId(), kit.getId()) : 0;
 
@@ -84,7 +90,6 @@ public class KitGUI {
                 meta.lore(lore);
 
                 // 3. Injection sécurisée de l'ID du kit dans les métadonnées de l'item (PDC)
-                // Évite de baser la reconnaissance du clic sur le nom de l'item
                 meta.getPersistentDataContainer().set(plugin.kitKey, PersistentDataType.STRING, kit.getId());
                 icon.setItemMeta(meta);
             }
